@@ -2,6 +2,9 @@ package edu.emory.fff;
 
 import java.util.Calendar;
 
+import edu.emory.fff.mail.imap.CheckMailAsyncTask;
+import edu.emory.fff.mail.imap.ImapSettings;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -22,8 +25,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//Amirreza part! You can delete me :)
+		System.out.println("Amirreza: Activity created!");
+		new CheckMailAsyncTask().execute(new ImapSettings("mail.gatech.edu", "mfarajtabar3", "mehrGT9sahar", 0));
+		//
+		
 		// Start service using AlarmManager
-
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.SECOND, 10);
        

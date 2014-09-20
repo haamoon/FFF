@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 
 public class CheckMailAsyncTask extends AsyncTask<ImapSettings, Void, Message[]> {
     
+	private static final int MAX_EMAIL_NUMBER = 0;
 	protected Message[] doInBackground(ImapSettings... imapProperties) {
 		ImapSettings loginCredintial = imapProperties[0];
 		System.out.println("Amirreza: background task started!");
@@ -25,7 +26,7 @@ public class CheckMailAsyncTask extends AsyncTask<ImapSettings, Void, Message[]>
 	        int newMessageCount = inbox.getNewMessageCount();
 	        int messageCount = inbox.getMessageCount();
 	        messages = inbox.getMessages(messageCount - Math.min(20, newMessageCount) + 1, messageCount);
-	        System.out.println("Amirreza: " + newMessageCount);  
+	        System.out.println("Amirreza: recived date" + messages[0].getReceivedDate());  
 	        inbox.close(false); 
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
