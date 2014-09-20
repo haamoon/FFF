@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 	
 	public void start_newAct(){
  	   Intent intent = new Intent(this,EditEvent.class);
- 	  intent.putExtra("date", "9/12/14");
+ 	  intent.putExtra("date", "05-12-2014 12:23:34");
 		intent.putExtra("location", "Lobby");
 		String body="This is a service email from Bank of America. Please note that you may receive service emails in accordance with your Bank of America service agreements"+
 				"whether or not you elect to receive promotional email."+
