@@ -4,5 +4,13 @@
     <string name="app_name">FFF</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_edit_event">EditEvent</string>
+    <string name="message">We've just found a free food posibility!</string>
+    <string name="date_label">on:</string>
+    <string name="loc_label">in:</string>
+    <string name="Details">Details:</string>
+    <string name="yes_add">Yes! Add to calendar</string>
+    <string name="No_forget">No! Forget it</string>
+    <string name="from_label">From:</string>
 
 </resources>
