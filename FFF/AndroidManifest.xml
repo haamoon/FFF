@@ -14,9 +14,25 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.emory.fff.SettingsActivity"
+            android:name=".SettingsActivity"
             android:label="@string/app_name" >
+            
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <service
+           android:name="edu.emory.fff.NotificationService"
+           android:exported="true"
+           android:enabled="true"/>       
+        
     </application>
 
 </manifest>
