@@ -2,10 +2,8 @@ package edu.emory.fff;
 
 
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 
 import edu.emory.fff.parser.Event;
@@ -27,7 +25,8 @@ public class NotifListActivity extends ListActivity {
 			Event e = new Event();
 			e.setTitle("Event" + String.valueOf(i));
 			//MM-dd-yyyy hh:mm:ss
-			e.setDate(Calendar.getInstance() );
+			e.setDate(Calendar.getInstance());
+			e.setLocation("Felan Ja");
 			events.add(e);
 		}
 		
