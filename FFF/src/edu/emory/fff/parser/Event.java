@@ -1,6 +1,7 @@
 package edu.emory.fff.parser;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Event {
@@ -9,7 +10,7 @@ public class Event {
 	
 	private String title;
 	private String host;
-	private String date;
+	private Calendar date;
 	private String location;
 	private String body;
 	private ArrayList<Highlight> highlights;
@@ -38,10 +39,10 @@ public class Event {
 	public void setHost(String host) {
 		this.host = host;
 	}
-	public String getDate() {
+	public Calendar getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 	public String getLocation() {
