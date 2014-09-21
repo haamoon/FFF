@@ -1,19 +1,25 @@
 package edu.emory.fff.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.emory.fff.R;
 import edu.emory.fff.parser.Event;
 
-public class CustomAdapter extends ArrayAdapter<Event> {
+public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListener {
     private final Context context;
     private final ArrayList<Event> events;
     private final int layoutResourceId;
@@ -40,6 +46,8 @@ public class CustomAdapter extends ArrayAdapter<Event> {
             holder.textView1 = (TextView)row.findViewById(R.id.eventtxt);
             holder.textView2 = (TextView)row.findViewById(R.id.date);
             holder.addToCal = (Button)row.findViewById(R.id.addToCal);
+            
+            holder.addToCal.setOnClickListener(this);
             //holder.textView3 = (TextView)row.findViewById(R.id.text3);
             row.setTag(holder);
         }
@@ -50,8 +58,9 @@ public class CustomAdapter extends ArrayAdapter<Event> {
 
         Event e = events.get(position);
         holder.textView1.setText(e.getTitle());
-        holder.textView1.setTag(e.getLocation());
-        holder.textView2.setText(e.getDate());
+        holder.textView2.setText(e.getDate().toString());
+        
+        holder.addToCal.setTag(new ButtonHolder(e.getDate(), e.getLocation(), e.getTitle()));
        
         return row;
     }
@@ -62,4 +71,47 @@ public class CustomAdapter extends ArrayAdapter<Event> {
         TextView textView2;
         Button addToCal;
     }
+
+    static class ButtonHolder
+    {
+    	public ButtonHolder(Calendar date, String location, String dectription)
+    	{
+    		this.date = date;
+    		this.location = location;
+    		this.description = dectription;
+    	}
+    	
+    	public Calendar date;
+    	public String location;
+    	public String description;
+    }
+    
+	@Override
+	public void onClick(View v) 
+	{
+		System.out.println("Safoora: Salam");
+		ButtonHolder bh = (ButtonHolder) v.getTag();
+    	Calendar cal = Calendar.getInstance();
+    	Intent intent = new Intent(Intent.ACTION_EDIT);
+    	intent.setType("vnd.android.cursor.item/event");
+    	SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss"); // Month.Day.Year
+
+//    	Date d = null;
+//    	try {
+//    		d = formatter.parse(bh.date);
+//    	} catch (ParseException e) {
+//    		// TODO Auto-generated catch block
+//    		e.printStackTrace();
+//    	}
+		 	long timestamp = bh.date.getTimeInMillis();
+		
+		intent.putExtra("beginTime", timestamp);
+//		System.out.println("Date:"+getIntent().getStringExtra("date")+"***"+cal.getTimeInMillis());
+		// TODO Auto-generated catch block
+    	intent.putExtra("allDay", false);
+    	intent.putExtra("endTime",cal.getTimeInMillis() + 60 * 60 * 1000);
+    	intent.putExtra("title","Free Food" );
+    	intent.putExtra("eventLocation",bh.location);
+    	this.context.startActivity(intent);
+	}
 }

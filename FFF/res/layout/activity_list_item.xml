@@ -40,7 +40,6 @@
             android:gravity="right"
             android:minHeight="28dip"
             android:minWidth="48dip"
-            android:onClick="addToCal"
             android:text="Add to Calendar"
             android:textAlignment="center"
             android:textSize="12sp" />
