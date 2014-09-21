@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notif"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:background="#CCFF99"
+    android:layout_margin="1dp">
+
+    <TextView
+        android:id="@+id/eventtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventTxt"
+        android:fontFamily="Verdana"
+        android:background="#CCFF99" />
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#CCFF99"
+        android:onClick="addToCal" >
+
+        <TextView
+            android:id="@+id/dateloc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#CCFF99"
+            android:fontFamily="Verdana"
+            android:text="DateLoc" />
+
+        <Button
+            android:id="@+id/addToCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Verdana"
+            android:text="Button"
+ />
+
+    </TableRow>
+
+</TableLayout>

@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        android:background="#000000" >
+        
+        <TextView
+            android:id="@+id/NofitListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#728F55"
+            android:fontFamily="Verdana"
+            android:text="@string/title_activity_notif_list"
+            android:textSize="26sp" />
+        
+        <ListView 
+    	android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#CCFF99" />
+        
+        
+    </LinearLayout>
+
+</RelativeLayout>

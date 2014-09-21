@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">FFF</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
@@ -12,5 +11,6 @@
     <string name="yes_add">Yes! Add to calendar</string>
     <string name="No_forget">No! Forget it</string>
     <string name="from_label">From:</string>
-
+    <string name="title_activity_notif_list">All Free Food Possibilities</string>
+    <string name="title_activity_list_item">ListItemActivity</string>
 </resources>
