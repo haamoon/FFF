@@ -11,16 +11,16 @@
         android:id="@+id/eventtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EventTxt"
+        android:background="#CCFF99"
         android:fontFamily="Verdana"
-        android:background="#CCFF99" />
+        android:text="EventTxt"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#CCFF99"
-        android:onClick="addToCal" >
+        android:background="#CCFF99" >
 
         <TextView
             android:id="@+id/date"
@@ -32,7 +32,16 @@
             android:text="Date" 
             android:maxLength="15"/>
         
-
+        <
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#CCFF99"
+            android:fontFamily="Verdana"
+            android:minWidth="200dp"
+            android:text="Date" 
+            android:maxLength="15"/>
+        
         <Button
             android:id="@+id/addToCal"
             android:layout_width="wrap_content"
@@ -41,6 +50,7 @@
             android:gravity="right"
             android:minHeight="28dip"
             android:minWidth="48dip"
+            android:onClick="addToCal"
             android:text="Add to Calendar"
             android:textAlignment="center"
             android:textSize="12sp" />
