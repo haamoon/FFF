@@ -13,6 +13,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,8 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startService(new Intent(getBaseContext(), NotificationService.class));
+				start_newAct();
+				
 			}
 		});
         Button stopBtn = (Button) findViewById(R.id.stopBtn);
@@ -63,7 +66,21 @@ public class MainActivity extends Activity {
                      // TODO Auto-generated method stub
                      stopService(new Intent(getBaseContext(), NotificationService.class));
                }
+               
         });
 		
 	}
+	
+	public void start_newAct(){
+ 	   Intent intent = new Intent(this,EditEvent.class);
+ 	  intent.putExtra("date", "05-12-2014 12:23:34");
+		intent.putExtra("location", "Lobby");
+		String body="This is a service email from Bank of America. Please note that you may receive service emails in accordance with your Bank of America service agreements"+
+				"whether or not you elect to receive promotional email."+
+				"Read our Privacy Notice.Please dont reply directly to this automatically generated email message."+
+				"Bank of America Email, 8th Floor-NC1-002-08-25, 101 South Tryon St., Charlotte, NC 28255-0001Bank of America";
+		intent.putExtra("body", body);
+		startActivity(intent);
+ 	   
+    }
 }
