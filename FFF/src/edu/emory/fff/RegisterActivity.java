@@ -28,9 +28,13 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
+		
 		DS=new DataSource(this);
 		DS.open();
-		
+//		if(DS.getSetting("USERNAME")!= null){
+//			startActivity(new Intent(this,NotifListActivity.class));
+//			return;
+//		}
 		Button findBut = (Button) findViewById(R.id.findButton);
 		findBut.setOnClickListener(new OnClickListener() {
 			
@@ -65,18 +69,16 @@ public class RegisterActivity extends Activity {
 		        //for 30 mint 60*60*1000
 		        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
 		                     10*1000, pintent);
+//		        stopService(new Intent(getBaseContext(), NotificationService.class));
 		        startService(new Intent(getBaseContext(), NotificationService.class));
 				
-				
-				start_act();
+		        Intent intent_2 = new Intent(v.getContext(),NotifListActivity.class);
+				finish();
+				startActivity(intent_2);
 				
 				
 				
 			}
 		});
-	}
-	public void start_act(){
-		Intent intent = new Intent(this,NotifListActivity.class);
-		startActivity(intent);
 	}
 }

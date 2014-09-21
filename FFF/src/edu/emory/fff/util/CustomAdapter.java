@@ -114,6 +114,7 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
 	    	intent.putExtra("endTime",cal.getTimeInMillis() + 60 * 60 * 1000);
 	    	intent.putExtra("title","Free Food" );
 	    	intent.putExtra("eventLocation",bh.location);
+	    	((Activity) v.getContext()).finish();
 	    	this.context.startActivity(intent);
 		}
 		else
@@ -126,7 +127,9 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
 			intent.putExtra("date", date_str);
 			intent.putExtra("location", e.getLocation());
 			intent.putExtra("body", e.getTitle());
+			((Activity) v.getContext()).finish();
 			this.context.startActivity(intent);
 		}
+		
 	}
 }

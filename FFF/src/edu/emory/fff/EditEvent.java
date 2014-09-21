@@ -87,14 +87,19 @@ public class EditEvent extends Activity {
 	        	intent.putExtra("endTime",cal.getTimeInMillis() + 60 * 60 * 1000);
 	        	intent.putExtra("title","Free Food" );
 	        	intent.putExtra("eventLocation",location.getText().toString());
-	        	startActivity(intent);
-	        	
 	        	Intent i = new Intent(this,NotifListActivity.class);
-	        	startActivity(i);
+	        	i.putExtra("Status", "added");
+	        	finish();
+	        	startActivity(intent);
+//	        	startActivity(i);
+	        	
+	        	
 	            
 	            return true;
 	        case R.id.no_forget:
 	        	Intent j = new Intent(this,NotifListActivity.class);
+	        	j.putExtra("Status", "Forget");
+	        	finish();
 	        	startActivity(j);
 	            return true;
 	        default:

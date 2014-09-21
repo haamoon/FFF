@@ -21,15 +21,10 @@ public class WelcomeActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 //				startService(new Intent(getBaseContext(), NotificationService.class));
-				start_newAct();
-				
+				Intent intent_1 = new Intent(v.getContext(),RegisterActivity.class);
+				finish();
+				startActivity(intent_1);
 			}
 		});
 	}
-	public void start_newAct(){
-	 	   Intent intent = new Intent(this,RegisterActivity.class);
-	 	   intent.putExtra("prop", "null");
-			startActivity(intent);
-	 	   
-	    }
 }
