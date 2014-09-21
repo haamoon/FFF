@@ -32,16 +32,6 @@
             android:text="Date" 
             android:maxLength="15"/>
         
-        <
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#CCFF99"
-            android:fontFamily="Verdana"
-            android:minWidth="200dp"
-            android:text="Date" 
-            android:maxLength="15"/>
-        
         <Button
             android:id="@+id/addToCal"
             android:layout_width="wrap_content"

@@ -51,7 +51,7 @@ public class CustomAdapter extends ArrayAdapter<Event> {
         Event e = events.get(position);
         holder.textView1.setText(e.getTitle());
         holder.textView1.setTag(e.getLocation());
-        holder.textView2.setText(e.getDate().toString());
+        holder.textView2.setText(e.getDate());
        
         return row;
     }
