@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Event {
+	private int id;
 	private String coordinater;
 	private Date notification_date;
 	
@@ -14,6 +15,14 @@ public class Event {
 	private String location;
 	private String body;
 	private ArrayList<Highlight> highlights;
+	
+	public int getID() {
+		return id;
+	}
+	
+	public void setID(int id) {
+		this.id = id;
+	}
 	
 	public String getCoordinater() {
 		return coordinater;
