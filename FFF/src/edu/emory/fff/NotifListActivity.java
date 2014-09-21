@@ -26,7 +26,7 @@ public class NotifListActivity extends ListActivity {
 			Event e = new Event();
 			e.setTitle("Event" + String.valueOf(i));
 			//MM-dd-yyyy hh:mm:ss
-			e.setDate(te(ate("11-" + String.valueOf(i) + "-2014"));
+			e.setDate("11-" + String.valueOf(i) + "-2014");
 			events.add(e);
 		}
 		
