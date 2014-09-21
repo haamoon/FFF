@@ -1,6 +1,7 @@
 package edu.emory.fff.mail.imap;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -9,6 +10,8 @@ import java.util.Vector;
 import javax.mail.*;
 
 import edu.emory.fff.database.DataSource;
+import edu.emory.fff.parser.Event;
+import edu.emory.fff.parser.Parser;
 
 import android.os.AsyncTask;
 
@@ -27,11 +30,11 @@ public class CheckMailAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	
 	protected Message[] doInBackground(Object... args) {
 		
-		ImapSettings loginCredintial = (ImapSettings)args[0];
-		
-		System.out.println("Amirreza: background task started!");
+		ImapSettings loginCredintial = (ImapSettings)args[0];	
+		Vector<Parser> parsers = (Vector<Parser>) args[1];
 		Store store = null;
 		Vector<Message> messages = new Vector<Message>();
+		Vector<Event> events = new Vector<Event>();
 		try {
 			Properties props = new Properties();
 			props.setProperty("mail.store.protocol", "imaps");
@@ -72,7 +75,15 @@ public class CheckMailAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	        		break;
 	        	}
 	        }
-	        dataSource.updateSetting(LAST_READ_TIME, Long.toString(newLastMilis));  
+	        dataSource.updateSetting(LAST_READ_TIME, Long.toString(newLastMilis)); 
+	        
+	        //generate events
+	        Message[] messageArray = messages.toArray(new Message[messages.size()]);
+	        for(Parser parser : parsers)
+	        {
+	        	ArrayList<Event> newEvents = parser.parse(messageArray);
+	        	events.addAll(newEvents);
+	        }
 	        inbox.close(false); 
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
@@ -87,17 +98,8 @@ public class CheckMailAsyncTask extends AsyncTask<Object, Void, Message[]> {
 		        store.close();
 		      } catch (MessagingException e) {}
 		} 
-		Message[] messageArray = messages.toArray(new Message[messages.size()]);
-		try {
-			System.out.println(messageArray[0].getContent());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return messageArray;
+		
+		return null;
     }
 
     protected void onProgressUpdate() {
