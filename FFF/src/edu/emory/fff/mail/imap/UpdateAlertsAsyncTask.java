@@ -58,7 +58,7 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	        long newLastMilis = lastMilis;
 	        for(int i = 0; i < messageCount && i < MAX_EMAIL_NUMBER; i++)
 	        {
-	        	Message message = inbox.getMessage(messageCount);
+	        	Message message = inbox.getMessage(messageCount-i);
 	        	Date receivedDate = message.getReceivedDate();
 	        	cal.setTime(receivedDate);
 	        	long currMilis = cal.getTimeInMillis();

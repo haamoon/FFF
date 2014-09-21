@@ -45,9 +45,9 @@ public abstract class Parser {
 		try {
 	        for (Message msg:msgs) {
 	            Address[] in = msg.getFrom();
-                for (Address address : in) {
-                    System.out.println("mehrdad: FROM:" + address.toString());
-                }
+                // for (Address address : in) {
+                //    System.out.println("mehrdad: FROM:" + address.toString());
+                // }
                 // System.out.println("mehrdad: SENT DATE:" + msg.getSentDate());
                 // System.out.println("mehrdad: SUBJECT:" + msg.getSubject());
                 
