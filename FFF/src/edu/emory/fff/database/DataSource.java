@@ -18,6 +18,22 @@ public class DataSource {
 	  private SQLiteDatabase database;
 	  private MySQLiteHelper dbHelper;
 
+	  private static Context context;
+	  private static DataSource instance;
+	  public static DataSource getInstance(Context context) 
+	  {
+		  if(DataSource.instance == null)
+		  {
+			  if(context == null) {
+				  throw new IllegalArgumentException("context and instance can not be null at the same time!");
+			  }
+			  DataSource.context = context;
+			  DataSource.instance = new DataSource(DataSource.context);
+		  }
+		  return DataSource.instance;
+	  }
+	  
+	  
 	  
 	  public DataSource(Context context) {
 	    dbHelper = new MySQLiteHelper(context);
