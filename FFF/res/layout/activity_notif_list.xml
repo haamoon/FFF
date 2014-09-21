@@ -23,7 +23,7 @@
             android:layout_gravity="center_horizontal"
             android:background="#728F55"
             android:fontFamily="Verdana"
-            android:text="@string/title_activity_notif_list"
+            android:text="@string/activity_notif_list"
             android:textSize="26sp" />
         
         <ListView 
