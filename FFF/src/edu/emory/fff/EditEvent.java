@@ -27,6 +27,9 @@ public class EditEvent extends Activity {
 	
 	EditText date;
 	EditText location;
+	
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +48,10 @@ public class EditEvent extends Activity {
 		 TextView body = (TextView) findViewById(R.id.body);
 		 body.setText(intent.getStringExtra("body"));
 		 
-		 Spannable WordtoSpan = new SpannableString(intent.getStringExtra("body"));   
-		 WordtoSpan.setSpan(new BackgroundColorSpan(Color.YELLOW), 2, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		 WordtoSpan.setSpan(new BackgroundColorSpan(Color.YELLOW), 10, 18, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		 body.setText(WordtoSpan);
+//		 Spannable WordtoSpan = new SpannableString(intent.getStringExtra("body"));   
+//		 WordtoSpan.setSpan(new BackgroundColorSpan(Color.YELLOW), 2, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		 WordtoSpan.setSpan(new BackgroundColorSpan(Color.YELLOW), 10, 18, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		 body.setText(WordtoSpan);
 		
 	}
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,7 +73,7 @@ public class EditEvent extends Activity {
 	        	Intent intent = new Intent(Intent.ACTION_EDIT);
 	        	intent.setType("vnd.android.cursor.item/event");
 	        	SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss"); // Month.Day.Year
-
+//	        	String date_str = formatter.format(date);
 	        	Date d = null;
 	        	try {
 	        		d = formatter.parse(date.getText().toString());

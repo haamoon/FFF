@@ -121,7 +121,10 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
 		{
 			Event e = ((ViewHolder)v.getTag()).e;
 			Intent intent = new Intent(this.context, EditEvent.class);
-			intent.putExtra("date", e.getDate().toString());
+			Date d = e.getDate().getTime();
+			SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss");
+        	String date_str = formatter.format(d);
+			intent.putExtra("date", date_str);
 			intent.putExtra("location", e.getLocation());
 			intent.putExtra("body", e.getTitle());
 			this.context.startActivity(intent);
