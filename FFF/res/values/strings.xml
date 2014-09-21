@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">FFF</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
@@ -17,4 +18,13 @@
     <string name="Register">Register</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="Welcome">Free Food Finder</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="Server_name_label">Server:</string>
+    <string name="Server_text">Enter your mail server here</string>
+    <string name="username_label">Username:</string>
+    <string name="username_text">Enter your username here</string>
+    <string name="password_label">Password:</string>
+    <string name="password_text">Enter your password here</string>
+    <string name="find_button">Find Free Food</string>
+
 </resources>

@@ -24,7 +24,7 @@
         android:textStyle="bold|italic" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
