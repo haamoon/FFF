@@ -1,6 +1,5 @@
 package edu.emory.fff.mail.imap;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,11 +15,11 @@ import edu.emory.fff.parser.Parser;
 import android.os.AsyncTask;
 
 
-public class CheckMailAsyncTask extends AsyncTask<Object, Void, Message[]> {
+public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
     
 	private DataSource dataSource;
 	
-	public CheckMailAsyncTask(DataSource dataSource)
+	public UpdateAlertsAsyncTask(DataSource dataSource)
 	{
 		this.dataSource = dataSource;
 	}
