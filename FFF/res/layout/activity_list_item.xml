@@ -29,18 +29,9 @@
             android:background="#CCFF99"
             android:fontFamily="Verdana"
             android:minWidth="200dp"
-            android:text="DateLoc" 
-            android:maxLength="10"/>
+            android:text="Date" 
+            android:maxLength="15"/>
         
-        <TextView
-        	android:id="@+id/loc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#CCFF99"
-            android:fontFamily="Verdana"
-            android:minWidth="200dp"
-            android:text="DateLoc" 
-            android:maxLength="10"/>
 
         <Button
             android:id="@+id/addToCal"
