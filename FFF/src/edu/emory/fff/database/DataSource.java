@@ -10,9 +10,8 @@ public class DataSource {
 	  // Database fields
 	  private SQLiteDatabase database;
 	  private MySQLiteHelper dbHelper;
-//	  private String[] settingAllCollumns = { SettingTable.COLUMN_ID,
-//	      SettingTable.COLUMN_VALUE };
 
+	  
 	  public DataSource(Context context) {
 	    dbHelper = new MySQLiteHelper(context);
 	  }
@@ -35,6 +34,7 @@ public class DataSource {
 			  database.insert(SettingTable.TABLE_SETTINGS, null, contentValues);
 		  }
 	  }
+	  
 	  
 	  public String getSetting(String key) {
 		  Cursor cursor = database.rawQuery( "select * from " + SettingTable.TABLE_SETTINGS + " where " + SettingTable.COLUMN_ID + "= ?", new String[] {key} );
