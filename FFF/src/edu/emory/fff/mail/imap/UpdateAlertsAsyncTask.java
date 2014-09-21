@@ -10,6 +10,7 @@ import javax.mail.*;
 
 import edu.emory.fff.database.DataSource;
 import edu.emory.fff.parser.Event;
+import edu.emory.fff.parser.Highlight;
 import edu.emory.fff.parser.Parser;
 
 import android.os.AsyncTask;
@@ -29,7 +30,8 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	
 	protected Message[] doInBackground(Object... args) {
 		
-		ImapSettings loginCredintial = (ImapSettings)args[0];	
+		ImapSettings loginCredintial = (ImapSettings)args[0];
+		@SuppressWarnings("unchecked")
 		Vector<Parser> parsers = (Vector<Parser>) args[1];
 		Store store = null;
 		Vector<Message> messages = new Vector<Message>();
@@ -56,7 +58,7 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	        long newLastMilis = lastMilis;
 	        for(int i = 0; i < messageCount && i < MAX_EMAIL_NUMBER; i++)
 	        {
-	        	Message message = inbox.getMessage(messageCount);
+	        	Message message = inbox.getMessage(messageCount-i);
 	        	Date receivedDate = message.getReceivedDate();
 	        	cal.setTime(receivedDate);
 	        	long currMilis = cal.getTimeInMillis();
@@ -81,6 +83,20 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	        for(Parser parser : parsers)
 	        {
 	        	ArrayList<Event> newEvents = parser.parse(messageArray);
+	        	for (Event event:newEvents) {
+	            	System.out.println("mehrdad: coordinator : " + event.getCoordinater());
+	            	System.out.println("mehrdad: notificatio date : " + event.getNotification_date());
+	            	System.out.println("mehrdad: tile : " + event.getTitle());
+	            	System.out.println("mehrdad: host : " + event.getHost());
+	            	System.out.println("mehrdad: date : " + event.getDate());
+	            	System.out.println("mehrdad: location : " + event.getLocation());
+	            	System.out.println("mehrdad: body : " + event.getBody());
+	            	System.out.println("mehrdad: highlights : ");
+	            	for (Highlight highlight : event.getHighlights()) {
+	            		System.out.println("mehrdad: "+ event.getBody().substring(
+	            				highlight.getStartIndex(), highlight.getEndIndex()));
+	            	}
+	        	}
 	        	events.addAll(newEvents);
 	        }
 	        inbox.close(false); 

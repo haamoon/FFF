@@ -9,7 +9,7 @@ public class Event {
 	
 	private String title;
 	private String host;
-	private Date date;
+	private String date;
 	private String location;
 	private String body;
 	private ArrayList<Highlight> highlights;
@@ -38,10 +38,10 @@ public class Event {
 	public void setHost(String host) {
 		this.host = host;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getLocation() {

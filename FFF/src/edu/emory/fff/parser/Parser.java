@@ -45,38 +45,43 @@ public abstract class Parser {
 		try {
 	        for (Message msg:msgs) {
 	            Address[] in = msg.getFrom();
-                for (Address address : in) {
-                    System.out.println("FROM:" + address.toString());
-                }
-                System.out.println("SENT DATE:" + msg.getSentDate());
-                System.out.println("SUBJECT:" + msg.getSubject());
+                // for (Address address : in) {
+                //    System.out.println("mehrdad: FROM:" + address.toString());
+                // }
+                // System.out.println("mehrdad: SENT DATE:" + msg.getSentDate());
+                // System.out.println("mehrdad: SUBJECT:" + msg.getSubject());
                 
 	            String contentType = msg.getContentType();
-	            String content = "content";
-	            System.out.println(contentType);
-	            System.out.println(msg.getContent().getClass().getName());
+	            String content = "mehrdad: content";
+	            // System.out.println("mehrdad" + contentType);
+	            // System.out.println("mehrdad:" + msg.getContent().getClass().getName());
 	            if (contentType.substring(0, 9).compareTo("multipart") == 0) {
 	                Multipart mp = (Multipart) msg.getContent();                	
 	                BodyPart bp = mp.getBodyPart(0);
 	                content = bp.getContent().toString();
-	            } else if (contentType.substring(0, 4).compareTo("TEXT") == 0) {
+	            } else if (contentType.substring(0, 4).compareTo("mehrdad: TEXT") == 0) {
 	            	content = (String) msg.getContent();
 	            }
 	            else {
-	            	throw new Exception("strainge content type!");
+	            	throw new Exception("mehrdad: strainge content type!");
 	            }
 	            content = content.toLowerCase();
 	            Matcher foodMatcher = foodPattern.matcher(content);
 	            Matcher freeMatcher = freePattern.matcher(content);
 	            int step = 30;
+	            boolean foodEvent = false;
+	            ArrayList<Event> tempEvents = new ArrayList<Event>();
 	            while (foodMatcher.find()) {
+	            	foodEvent = true;
 	            	int startInd = foodMatcher.start();
 	            	int endInd = foodMatcher.end();
-	
-	            	
-	            	System.out.println(content.substring(startInd,endInd));
-
-	                System.out.println("CONTENT:" + content);
+	            	Event event = new Event();
+	            	if (foodEvent) {
+	            		tempEvents.add(event);
+	            		break;
+	            	}
+	            	// System.out.println("mehrdad: " + content.substring(startInd,endInd));
+	                // System.out.println("mehrdad: CONTENT:" + content);
 	            }
 	        }
 	    } catch (Exception mex) {

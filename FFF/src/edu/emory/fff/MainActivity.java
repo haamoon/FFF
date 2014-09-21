@@ -1,11 +1,14 @@
 package edu.emory.fff;
 
 import java.util.Calendar;
+import java.util.Vector;
 
 
 import edu.emory.fff.database.DataSource;
 import edu.emory.fff.mail.imap.UpdateAlertsAsyncTask;
 import edu.emory.fff.mail.imap.ImapSettings;
+import edu.emory.fff.parser.Parser;
+import edu.emory.fff.parser.foodparser.FoodParser;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -31,7 +34,10 @@ public class MainActivity extends Activity {
 		//Amirreza's part! You can delete me :)
 		DataSource dataSource = new DataSource(this);
 		dataSource.open();
-		new UpdateAlertsAsyncTask(dataSource).execute(new ImapSettings("mail.gatech.edu", "mfarajtabar3", "mehrGT9sahar", 0));
+		ImapSettings imapSettings = new ImapSettings("mail.gatech.edu", "mfarajtabar3", "mehrGT9sahar", 0);
+		Vector<Parser> parsers = new Vector<Parser>();
+		parsers.add(new FoodParser());
+		new UpdateAlertsAsyncTask(dataSource).execute(imapSettings, parsers);
 		//
 		
 		// Start service using AlarmManager
