@@ -8,6 +8,7 @@ public class HighlightTable {
 	  public static final String COLUMN_START = "start";
 	  public static final String COLUMN_END = "end";
 	  
+	  public static final String[] ALL_COLUMNS = new String[] {COLUMN_ID, COLUMN_START, COLUMN_END};
 	// Database creation sql statement
 	  private static final String DATABASE_CREATE = "create table "
 	      + TABLE_HIGHLIGHT + "(" + COLUMN_ID + " integer, " + 

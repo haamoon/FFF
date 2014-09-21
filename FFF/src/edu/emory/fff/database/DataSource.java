@@ -1,11 +1,12 @@
 package edu.emory.fff.database;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import edu.emory.fff.parser.Event;
 import edu.emory.fff.parser.Highlight;
+import edu.emory.fff.util.ConverDateFormat;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,7 +33,6 @@ public class DataSource {
 		  }
 		  return DataSource.instance;
 	  }
-	  
 	  
 	  
 	  public DataSource(Context context) {
@@ -92,11 +92,15 @@ public class DataSource {
 		  event.setID(id);
 		  event.setTitle(cursor.getString(1));
 		  event.setHost(cursor.getString(2)); 
-		  //event.setDate(date);
+		  try {
+			event.setDate(ConverDateFormat.convertToCalendar(cursor.getString(3)));
+		  } catch (ParseException e) {
+			  e.printStackTrace();
+		  }
 		  event.setLocation(cursor.getString(4));
 		  event.setBody(cursor.getString(5));
 		  event.setCoordinater(cursor.getString(6));
-		  //event.setNotification_date(cursor.getString(7));
+		  event.setNotification_date(null);
 		  
 		  ArrayList<Highlight> highlights = getHighlights(id);
 		  event.setHighlights(highlights);
@@ -106,18 +110,70 @@ public class DataSource {
 	  
 	  private ArrayList<Highlight> getHighlights(int id)
 	  {
-		  return null;
+		  Cursor cursor = database.query(HighlightTable.TABLE_HIGHLIGHT, HighlightTable.ALL_COLUMNS, HighlightTable.COLUMN_ID + " = " + id, null, null, null, null);
+		  ArrayList<Highlight> lights = new ArrayList<Highlight>();
+		  cursor.moveToFirst();
+		  int count = cursor.getCount();
+		  for(int i = 0; i < count; i++) {
+		      Highlight light = new Highlight();
+		      light.setStartIndex(cursor.getInt(1));
+		      light.setEndIndex(cursor.getInt(2));
+		      cursor.moveToNext();
+		  }
+		  return lights;
 	  }
 	  
 	  public void deleteEvent(Event e)
 	  {
-		  
+		  long id = e.getID(); 
+		  database.delete(EventTable.TABLE_EVENTS, EventTable.COLUMN_ID
+			        + " = " + id, null);
+		  database.delete(HighlightTable.TABLE_HIGHLIGHT, HighlightTable.COLUMN_ID
+			        + " = " + id, null);
 	  }
-	  
+	   
 	  public void addEvent(Event[] events)
 	  {
+		  if(events == null)
+		  {
+			  return;
+		  }
 		  
+		  for(Event event: events)
+		  {
+			  ContentValues values = new ContentValues();
+			  values.put(EventTable.COLUMN_TITLE, event.getTitle());
+			  values.put(EventTable.COLUMN_HOST, event.getHost());
+			  values.put(EventTable.COLUMN_DATE, ConverDateFormat.convertToString(event.getDate()));
+			  values.put(EventTable.COLUMN_LOC, event.getLocation());
+			  values.put(EventTable.COLUMN_BODY, event.getBody());
+			  values.put(EventTable.COLUMN_COOR, event.getCoordinater());
+			  values.put(EventTable.COLUMN_NOTE_DATE, (String)null);
+			  
+			  long insertId = database.insert(EventTable.TABLE_EVENTS, null, values);
+			  event.setID(insertId);
+//			  Cursor cursor = database.query(EventTable.TABLE_EVENTS,
+//					  EventTable.ALL_COLUMNS, EventTable.COLUMN_ID + " = " + insertId, null,
+//					  null, null, null);
+//			  cursor.moveToFirst();
+//			  Event newEvent = cursorToEvent(cursor);
+//			  cursor.close();
+			  
+			  this.addHighlights(event.getHighlights(), insertId);
+		  }
 	  }
 	  
+	  
+	  private void addHighlights(ArrayList<Highlight> highLights, long id) {
+		  if(highLights == null) {
+			  return;
+		  }
+		  for(Highlight light: highLights) {
+			  ContentValues values = new ContentValues();
+			  values.put(HighlightTable.COLUMN_ID, id);
+			  values.put(HighlightTable.COLUMN_START, light.getStartIndex());
+			  values.put(HighlightTable.COLUMN_END, light.getEndIndex());
+		  }
+	  }
 	  
 }
