@@ -23,20 +23,36 @@
         android:onClick="addToCal" >
 
         <TextView
-            android:id="@+id/dateloc"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#CCFF99"
             android:fontFamily="Verdana"
-            android:text="DateLoc" />
+            android:minWidth="200dp"
+            android:text="DateLoc" 
+            android:maxLength="10"/>
+        
+        <TextView
+        	android:id="@+id/loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#CCFF99"
+            android:fontFamily="Verdana"
+            android:minWidth="200dp"
+            android:text="DateLoc" 
+            android:maxLength="10"/>
 
         <Button
             android:id="@+id/addToCal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="Verdana"
-            android:text="Button"
- />
+            android:gravity="right"
+            android:minHeight="28dip"
+            android:minWidth="48dip"
+            android:text="Add to Calendar"
+            android:textAlignment="center"
+            android:textSize="12sp" />
 
     </TableRow>
 

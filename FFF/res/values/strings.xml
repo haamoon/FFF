@@ -11,6 +11,7 @@
     <string name="yes_add">Yes! Add to calendar</string>
     <string name="No_forget">No! Forget it</string>
     <string name="from_label">From:</string>
-    <string name="title_activity_notif_list">All Free Food Possibilities</string>
+    <string name="title_activity_notif_list">Free Food Finder</string>
     <string name="title_activity_list_item">ListItemActivity</string>
+    <string name="activity_notif_list">All Free Food Possibilities</string>
 </resources>

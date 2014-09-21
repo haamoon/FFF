@@ -17,7 +17,7 @@ public class NotifListActivity extends ListActivity {
 		setContentView(R.layout.activity_notif_list);
 		
 		ArrayList<Event> events = new ArrayList<Event>();
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			Event e = new Event();
 			e.setBody("Event" + String.valueOf(i));
