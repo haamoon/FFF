@@ -58,7 +58,7 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
 
         Event e = events.get(position);
         holder.textView1.setText(e.getTitle());
-        holder.textView2.setText(e.getDate());
+        holder.textView2.setText(e.getDate().toString());
         
         holder.addToCal.setTag(new ButtonHolder(e.getDate(), e.getLocation(), e.getTitle()));
        
@@ -74,14 +74,14 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
 
     static class ButtonHolder
     {
-    	public ButtonHolder(String date, String location, String dectription)
+    	public ButtonHolder(Calendar date, String location, String dectription)
     	{
     		this.date = date;
     		this.location = location;
     		this.description = dectription;
     	}
     	
-    	public String date;
+    	public Calendar date;
     	public String location;
     	public String description;
     }
@@ -96,14 +96,14 @@ public class CustomAdapter extends ArrayAdapter<Event> implements OnClickListene
     	intent.setType("vnd.android.cursor.item/event");
     	SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss"); // Month.Day.Year
 
-    	Date d = null;
-    	try {
-    		d = formatter.parse(bh.date);
-    	} catch (ParseException e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	}
-		 	long timestamp = d.getTime();
+//    	Date d = null;
+//    	try {
+//    		d = formatter.parse(bh.date);
+//    	} catch (ParseException e) {
+//    		// TODO Auto-generated catch block
+//    		e.printStackTrace();
+//    	}
+		 	long timestamp = bh.date.getTimeInMillis();
 		
 		intent.putExtra("beginTime", timestamp);
 //		System.out.println("Date:"+getIntent().getStringExtra("date")+"***"+cal.getTimeInMillis());
