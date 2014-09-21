@@ -2,6 +2,7 @@ package edu.emory.fff;
 
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,11 +21,12 @@ public class NotifListActivity extends ListActivity {
 		setContentView(R.layout.activity_notif_list);
 		
 		ArrayList<Event> events = new ArrayList<Event>();
-		for (int i = 0; i < 6; i++)
+		for (int i = 21; i < 26; i++)
 		{
 			Event e = new Event();
 			e.setTitle("Event" + String.valueOf(i));
-			e.setDate(new Date(20, 0, i));
+			//MM-dd-yyyy hh:mm:ss
+			e.setDate(te(ate("11-" + String.valueOf(i) + "-2014"));
 			events.add(e);
 		}
 		
