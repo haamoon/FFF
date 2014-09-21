@@ -2,7 +2,9 @@ package edu.emory.fff;
 
 import java.util.Calendar;
 
-import edu.emory.fff.mail.imap.CheckMailAsyncTask;
+
+import edu.emory.fff.database.DataSource;
+import edu.emory.fff.mail.imap.UpdateAlertsAsyncTask;
 import edu.emory.fff.mail.imap.ImapSettings;
 
 import android.app.Activity;
@@ -25,9 +27,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//Amirreza part! You can delete me :)
-		System.out.println("Amirreza: Activity created!");
-		new CheckMailAsyncTask().execute(new ImapSettings("mail.gatech.edu", "mfarajtabar3", "mehrGT9sahar", 0));
+		//Amirreza's part! You can delete me :)
+		DataSource dataSource = new DataSource(this);
+		dataSource.open();
+		new UpdateAlertsAsyncTask(dataSource).execute(new ImapSettings("mail.gatech.edu", "mfarajtabar3", "mehrGT9sahar", 0));
 		//
 		
 		// Start service using AlarmManager
