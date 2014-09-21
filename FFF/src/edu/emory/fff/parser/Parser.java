@@ -52,9 +52,9 @@ public abstract class Parser {
                 // System.out.println("mehrdad: SUBJECT:" + msg.getSubject());
                 
 	            String contentType = msg.getContentType();
-	            String content = "mehrdad: content";
-	            // System.out.println("mehrdad" + contentType);
-	            // System.out.println("mehrdad:" + msg.getContent().getClass().getName());
+	            String content = "content";
+	            System.out.println("mehrdad: contentType =" + contentType);
+	            System.out.println("mehrdad: " + msg.getContent().getClass().getName());
 	            if (contentType.substring(0, 9).compareTo("multipart") == 0) {
 	                Multipart mp = (Multipart) msg.getContent();                	
 	                BodyPart bp = mp.getBodyPart(0);
@@ -63,7 +63,7 @@ public abstract class Parser {
 	            	content = (String) msg.getContent();
 	            }
 	            else {
-	            	throw new Exception("mehrdad: strainge content type!");
+	            	throw new Exception("mehrdad: strange content type!");
 	            }
 	            content = content.toLowerCase();
 	            Matcher foodMatcher = foodPattern.matcher(content);

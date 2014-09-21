@@ -4,6 +4,7 @@ package edu.emory.fff;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -26,7 +27,7 @@ public class NotifListActivity extends ListActivity {
 			Event e = new Event();
 			e.setTitle("Event" + String.valueOf(i));
 			//MM-dd-yyyy hh:mm:ss
-			e.setDate("11-" + String.valueOf(i) + "-2014");
+			e.setDate(Calendar.getInstance() );
 			events.add(e);
 		}
 		

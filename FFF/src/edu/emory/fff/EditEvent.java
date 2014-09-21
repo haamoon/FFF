@@ -54,7 +54,7 @@ public class EditEvent extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
         
 		
-		new MenuInflater(this).inflate(R.menu.menu, menu);
+//		new MenuInflater(this).inflate(R.menu.menu, menu);
 
 //	    return(super.onCreateOptionsMenu(menu));
 	    MenuInflater inflater = getMenuInflater();
