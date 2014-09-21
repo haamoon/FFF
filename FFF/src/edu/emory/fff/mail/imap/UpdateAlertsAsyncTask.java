@@ -25,7 +25,7 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 		this.dataSource = dataSource;
 	}
 	
-	private static final int MAX_EMAIL_NUMBER = 20;
+	private static final int MAX_EMAIL_NUMBER = 100;
 	private static final String LAST_READ_TIME = "LastReadTime";
 	
 	protected Message[] doInBackground(Object... args) {
@@ -62,17 +62,14 @@ public class UpdateAlertsAsyncTask extends AsyncTask<Object, Void, Message[]> {
 	        	Date receivedDate = message.getReceivedDate();
 	        	cal.setTime(receivedDate);
 	        	long currMilis = cal.getTimeInMillis();
-	        	if(newLastMilis < currMilis)
-	        	{
+	        	if(newLastMilis < currMilis) {
 	        		newLastMilis = currMilis;
 	        	}
 	        	
-	        	if(cal.getTimeInMillis() >= lastMilis)
-	        	{
+	        	if(cal.getTimeInMillis() >= lastMilis) {
 	        		messages.add(message);
 	        	}
-	        	else
-	        	{
+	        	else {
 	        		break;
 	        	}
 	        }
