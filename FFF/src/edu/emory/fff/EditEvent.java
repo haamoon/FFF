@@ -73,7 +73,6 @@ public class EditEvent extends Activity {
 	        	Intent intent = new Intent(Intent.ACTION_EDIT);
 	        	intent.setType("vnd.android.cursor.item/event");
 	        	SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss"); // Month.Day.Year
-//	        	String date_str = formatter.format(date);
 	        	Date d = null;
 	        	try {
 	        		d = formatter.parse(date.getText().toString());
@@ -84,16 +83,19 @@ public class EditEvent extends Activity {
 	   		 	long timestamp = d.getTime();
 	   		
 				intent.putExtra("beginTime", timestamp);
-//				System.out.println("Date:"+getIntent().getStringExtra("date")+"***"+cal.getTimeInMillis());
-				// TODO Auto-generated catch block
 	        	intent.putExtra("allDay", false);
 	        	intent.putExtra("endTime",cal.getTimeInMillis() + 60 * 60 * 1000);
 	        	intent.putExtra("title","Free Food" );
 	        	intent.putExtra("eventLocation",location.getText().toString());
 	        	startActivity(intent);
+	        	
+	        	Intent i = new Intent(this,NotifListActivity.class);
+	        	startActivity(i);
 	            
 	            return true;
 	        case R.id.no_forget:
+	        	Intent j = new Intent(this,NotifListActivity.class);
+	        	startActivity(j);
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
